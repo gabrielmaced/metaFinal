@@ -1,0 +1,23 @@
+python3 main.py mil.txt
+
+python3 main.py 100mil.txt
+
+python3 main.py 1milha.txt
+
+python3 main.py 50milha.txt
+
+python3 mainGRASP.py mil.txt
+
+python3 mainGRASP.py 100mil.txt
+
+python3 mainGRASP.py 1milha.txt
+
+python3 mainGRASP.py 50milha.txt
+
+python3 mainVNS.py mil.txt
+
+python3 mainVNS.py 100mil.txt
+
+python3 mainVNS.py 1milha.txt
+
+python3 mainVNS.py 50milha.txt
