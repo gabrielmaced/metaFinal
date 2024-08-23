@@ -29,6 +29,7 @@ def main():
   grammar_file = args.arquivo
 
   print("Utilizando o", grammar_file, "\n")
+  nome = "VNS_intermediario_"+grammar_file
 
   grafo, qtde_cores = read_grammar_file(grammar_file)
 
@@ -89,7 +90,7 @@ def main():
   pr.enable()
   
   inicio_vns = time.time()
-  solucao_vns, qtde_cores_solucao_vns = VNS(solucao_inicial,grafo)
+  solucao_vns, qtde_cores_solucao_vns = VNS(solucao_inicial,grafo,nome)
   fim_vns = time.time()
   tempo_vns = fim_vns - inicio_vns
   #print("Solução utilizando o VNS: ", solucao_vns)
@@ -100,7 +101,7 @@ def main():
 
   inicio_vns_annealing = time.time()
   solucao_vns_annealing, qtde_cores_solucao_vns_annealing = VNS(
-      solucao_inicial,grafo, annealing=True)
+      solucao_inicial,grafo,nome, annealing=True)
   fim_vns_annealing = time.time()
   tempo_vns_annealing = fim_vns_annealing - inicio_vns_annealing
   #print("Solução utilizando o VNS com o Annealing: ", solucao_vns_annealing)

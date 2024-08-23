@@ -13,6 +13,7 @@ from VNS import *
   # Simulated Annealing - busca_local com o "annealing" como True
 def busca_local(solucao_inicial,
                 grafo,
+                nome,
                   temp_inicial=1000,
                   temp_final=0.1,
                   alpha=0.9,
@@ -37,6 +38,10 @@ def busca_local(solucao_inicial,
             delta2 = obj(melhor_solucao) - obj(nova_solucao)
             if delta2 > 0:
               melhor_solucao = nova_solucao
+              with open(nome, 'w') as f:
+                # Substitui o print pelo write
+                f.write(str(melhor_solucao) + "\n")
+                f.write("Cores " + str(obj(melhor_solucao)) + "\n")
           else:
             if annealing:
               r = random.uniform(0, 1)

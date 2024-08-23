@@ -29,6 +29,7 @@ def main():
   grammar_file = args.arquivo
 
   print("Utilizando o", grammar_file, "\n")
+  nome = "Annealing_intermediario_"+grammar_file
 
   grafo, qtde_cores = read_grammar_file(grammar_file)
 
@@ -65,7 +66,7 @@ def main():
   pr.enable()
   inicio_simulated_annealing = time.time()
   solucao_simulated_annealing, qtde_cores_solucao_simulated_annealing = busca_local(
-      solucao_inicial,grafo)
+      solucao_inicial,grafo,nome)
   fim_simulated_annealing = time.time()
   tempo_simulated_annealing = fim_simulated_annealing - inicio_simulated_annealing
   #print("Solução utilizando o simulated annealing: ", solucao_simulated_annealing)

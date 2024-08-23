@@ -7,7 +7,6 @@ import cProfile, pstats, io
 from pstats import SortKey
 from Annealing import *
 from GRASP import *
-from VNS import *
 from geraGramatica import *
 
 import argparse
@@ -29,6 +28,7 @@ def main():
   grammar_file = args.arquivo
 
   print("Utilizando o", grammar_file, "\n")
+  nome = "GRASP_intermediario_"+grammar_file
 
   grafo, qtde_cores = read_grammar_file(grammar_file)
 
@@ -49,7 +49,7 @@ def main():
 
   print ("Quantidade de cores do GRASP fase de construção gulosa: ", qnt_cores_GRASP)
 
-  GRASP_busca_local , qnt_cores_GRASP_completo = busca_local(GRASP,grafo, annealing=False, )
+  GRASP_busca_local , qnt_cores_GRASP_completo = busca_local(GRASP,grafo,nome, annealing=False )
 
   print ("Quantidade de cores do GRASP após busca local: ", qnt_cores_GRASP_completo)
 

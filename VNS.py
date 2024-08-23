@@ -9,18 +9,22 @@ from geraGramatica import *
 from VNS import *
 
 
-def VNS(solucao_inicial,grafo , k_max=3, annealing=False):
+def VNS(solucao_inicial,grafo ,nome, k_max=3, annealing=False):
   melhor_solucao = solucao_inicial
   k = 1
 
   while k <= k_max:
     lista_vertices = list(melhor_solucao.keys())
     nova_solucao = vizinhanca_vns(lista_vertices,grafo, k)
-    nova_solucao, _ = busca_local(nova_solucao,grafo , annealing=annealing)
+    nova_solucao, _ = busca_localVNS(nova_solucao,grafo , annealing=annealing)
 
     if obj(nova_solucao) < obj(melhor_solucao):
       melhor_solucao = nova_solucao
       k = 1
+      with open(nome, 'w') as f:
+                # Substitui o print pelo write
+                f.write(str(melhor_solucao) + "\n")
+                f.write("Cores " + str(obj(melhor_solucao)) + "\n")
     else:
       k += 1
 
@@ -38,7 +42,7 @@ def vizinhanca_vns(lista_vertices,grafo, k):
     vizinho = gerar_solucao(swap_porcentagem(lista_vertices, 40),grafo)
     return vizinho
 
-def busca_local(solucao_inicial,
+def busca_localVNS(solucao_inicial,
                 grafo,
                   temp_inicial=1000,
                   temp_final=0.1,
